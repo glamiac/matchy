@@ -6,7 +6,7 @@
 
   <div class="row mb-3">
     <div class="col-4 themed-grid-col" [style.background-color]='card.color'
-    *ngFor="let card of cards" (click)='selectCard(card.id)'>{{ card.id+1 }}</div>
+    *ngFor="let card of cards" (click)='selectCard(card.id)'>{{ card.id }}: {{card.clicked ? 'Y' : 'N'}}</div>
   </div>
 
   <div class="row mb-3">

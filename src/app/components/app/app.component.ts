@@ -37,17 +37,34 @@ export class AppComponent {
 
   selectCard(id: number): void {
 
-    if (this.cards[id].clicked) {
+    if (this.gameOver) {
+      return;
+    }
+
+    const selectedCard = this.cards.find((card) => (card.id === id));
+    if (selectedCard.clicked) {
       this.message = 'This card was already clicked!';
       this.gameOver = true;
     }
     else {
-      this.cards[id].clicked = true;
-      this.message = 'Nice job!';
+      selectedCard.clicked = true;
     }
 
     // update score
     this.score = this.cards.filter(x => x.clicked).length;
+    this.shuffle();
+
+    if (this.score === this.cards.length) {
+      this.message = 'You win!';
+      this.gameOver = true;
+    }
+  }
+
+  shuffle(): void {
+      for (let i = this.cards.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
+      }
   }
 
   reset(): void {
@@ -55,6 +72,7 @@ export class AppComponent {
     this.gameOver = false;
     this.message = '';
 
+    this.shuffle();
     this.cards.forEach((card) => {
       card.clicked = false;
     });
