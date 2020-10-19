@@ -2,19 +2,18 @@
   <h1>Matchy</h1>
   <p class="lead">This game was built for the 1-800 Contacts Angular Badge.</p>
 
+  <a href="https://github.com/glamiac/matchy" target="_blank">Code Repo</a>
   <p>Score: {{ this.score }} / {{ this.cards.length}}</p>
 
   <div>
     <div class="row mb-3">
-      <img class="card" [style.background-position]="getBackgroundPosition(card.id)"
-      *ngFor="let card of cards" (click)='selectCard(card.id)' />
-    </div>
-
-    <div class="row mb-3">
-      <p>{{ this.message }}</p>
-    </div>
-
-    <div class="row mb-3" *ngIf="this.gameOver">
-      <button (click)='this.reset()'>Reset</button>
+      <img class="card" [style.background-position]="getBackgroundPosition(card.id)" *ngFor="let card of cards"
+        (click)='selectCard(card.id)' />
     </div>
   </div>
+
+  <div *ngIf="this.gameOver">
+    <button class="btn btn-info" (click)='this.reset()'>Reset</button>
+    <p>{{ this.message }}</p>
+  </div>
+</div>
