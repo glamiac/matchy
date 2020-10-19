@@ -15,10 +15,8 @@ export class AppComponent {
 
 
   cards: Card[];
-  colors: string[];
 
   constructor() {
-    this.colors = Object.values(Colors);
     this.cards = this.createCards(16);
   }
 
@@ -28,7 +26,6 @@ export class AppComponent {
     for (let i = 0; i < count; i++) {
       const card = new Card();
       card.id = i;
-      card.color = this.colors[i];
       cards.push(card);
     }
 
