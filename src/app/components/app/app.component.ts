@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Card } from 'src/app/model/card';
-import { Colors } from 'src/app/model/colors';
 
 @Component({
   selector: 'app-root',
