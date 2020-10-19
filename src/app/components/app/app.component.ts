@@ -77,4 +77,11 @@ export class AppComponent {
       card.clicked = false;
     });
   }
+
+  getBackgroundPosition(id: number): string {
+    const y = Math.floor(id / 5) * -202;
+    const x = (id % 5) * -206;
+
+    return x + 'px ' + y + 'px';
+  }
 }
